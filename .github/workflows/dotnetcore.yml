@@ -1,0 +1,25 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  publish:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.804
+    - name: Install AWS S3 .NET Tools
+      run: dotnet tool install -g Amazon.Lambda.Tools    
+    - name: Deploy Lambda
+      run: |
+        cd FlickrDownload
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        dotnet lambda deploy-function FlickrDownload --disable-interactive true
