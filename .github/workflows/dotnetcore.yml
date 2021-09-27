@@ -14,7 +14,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 2.1.804
+        dotnet-version: '3.1.x'
     - name: Install AWS S3 .NET Tools
       run: dotnet tool install -g Amazon.Lambda.Tools    
     - name: Deploy Lambda
