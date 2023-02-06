@@ -12,7 +12,7 @@
   "region" : "us-west-2",
   "configuration" : "Release",
   "function-runtime":"dotnet6",
-  "function-memory-size" : 256,
-  "function-timeout" : 30,
+  "function-memory-size" : 512,
+  "function-timeout" : 45,
   "function-handler" : "FlickrDownload::FlickrDownload.Function::FunctionHandler"
 }
